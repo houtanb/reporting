@@ -15,17 +15,26 @@
 % You should have received a copy of the GNU General Public License
 % along with Dynare.  If not, see <http://www.gnu.org/licenses/>.
 
-addpath('~/builds/dynare/matlab/utilities/general')
-addpath('~/builds/dynare/matlab/modules/dates/src')
-addpath('~/builds/dynare/matlab/modules/dseries/src')
-addpath('../src')
+test_dir = getenv('TEST_DIR');
+cd(test_dir);
+home_dir = getenv('HOME');
 
-initialize_dates_toolbox;
+addpath([home_dir '/dynare/matlab/modules/dates/src'])
+addpath([home_dir '/dynare/matlab/modules/dseries/src'])
+addpath([home_dir '/dynare/matlab/utilities/general'])
+
+disp('initializing dseries')
 initialize_dseries_toolbox;
+
+path
+
+disp('running the code')
 
 db_a = dseries('db_a.csv');
 db_q = dseries('db_q.csv');
 dc_a = dseries('dc_a.csv');
 dc_q = dseries('dc_q.csv');
+
+%ls /Users/travis/build/houtanb/reporting/test/../src
 
 createReport(dc_a, dc_q, db_a, db_q);

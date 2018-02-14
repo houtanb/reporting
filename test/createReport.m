@@ -296,7 +296,9 @@ rep = rep.addSeries('data', d, ...
                     'graphFanShadeColor', 'red', 'graphFanShadeOpacity', 20);
 
 %% Write & Compile Report
+disp('done making, now about to write.....');
 rep.write();
+disp('done writing, now about to compile.....');
 rep.compile();
 toc
 end
